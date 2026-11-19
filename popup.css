@@ -1,0 +1,53 @@
+/* 크랙 툴박스 팝업 — mac.css 위에 얹는 팝업 전용 배치 */
+body { width: 390px; background: var(--window); }
+.pop { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.hd { display: flex; align-items: center; gap: 8px; padding: 0 2px; }
+.hd img { border-radius: 5px; }
+.hd b { font-size: 14px; }
+.hd .ver { flex: 1; }
+.row-title { font-weight: 600; }
+.cap { font-size: 11.5px; font-weight: 600; color: var(--label-2); padding: 4px 4px 0; }
+.group.pad { padding: 10px 14px; }
+.step-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.hint { font-size: 11.5px; line-height: 1.45; color: var(--label-2); margin: 6px 0 0; white-space: pre-wrap; }
+.hint:empty { display: none; }
+
+.filebtn { display: block; text-align: center; padding: 10px; border-radius: 10px; border: 1px dashed var(--sep-strong); background: var(--panel-2); cursor: pointer; }
+.filebtn:hover { border-color: var(--accent); background: var(--accent-soft); }
+.filebtn input { display: none; }
+.filebtn b { display: block; font-size: 13px; }
+.filebtn span { display: block; font-size: 11px; color: var(--label-2); margin-top: 2px; }
+
+#status .group-row { min-height: 0; padding: 6px 12px; gap: 8px; font-size: 12px; }
+#status span { flex: 0 0 auto; }
+#status i { font-style: normal; color: var(--label-3); font-size: 11px; }
+#status b { flex: 1; font-weight: 550; color: var(--label-3); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#status .ok b { color: var(--up); }
+#status .warn b { color: #b25f00; }
+#status .bad b { color: var(--down); }
+#status .x { border: 0; background: none; color: var(--label-3); font-size: 15px; line-height: 1; padding: 0 2px; visibility: hidden; cursor: pointer; }
+#status .has .x { visibility: visible; }
+#status .x:hover { color: var(--down); }
+
+.picker { display: block; cursor: pointer; }
+.picker strong { display: block; font-size: 13px; }
+.picker span { display: block; font-size: 11px; color: var(--label-2); margin: 3px 0 7px; }
+.picker input { width: 100%; font-size: 11px; }
+
+#message { min-height: 16px; margin: 0; padding: 0 4px; font-size: 12px; line-height: 1.45; color: var(--label-2); white-space: pre-wrap; max-height: 150px; overflow: auto; }
+#message:empty { display: none; }
+#message.ok { color: var(--up); }
+#message.warn { color: #b25f00; }
+#message.bad { color: var(--down); }
+.btn.wide { width: 100%; }
+.btn.done { color: var(--up); }
+
+textarea { width: 100%; height: 92px; margin-top: 8px; border: .5px solid var(--control-edge); border-radius: 8px; padding: 8px; font: 12px/1.4 var(--font); color: var(--label); background: var(--control); resize: vertical; outline: none; }
+textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.choices { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+details { font-size: 12px; }
+summary { cursor: pointer; color: var(--label-2); padding: 0 4px; }
+details .group { margin-top: 8px; }
+details .picker { margin-top: 8px; }
+.foot { font-size: 10.5px; color: var(--label-3); line-height: 1.45; margin: 0; padding: 0 4px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #status .warn b, :root:not([data-theme="light"]) #message.warn { color: #ffb340; } }

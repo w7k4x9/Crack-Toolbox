@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>크랙 툴박스</title>
+  <link rel="stylesheet" href="mac.css">
+  <link rel="stylesheet" href="popup.css">
+  <script src="lib/theme.js"></script>
+</head>
+<body>
+  <main class="pop">
+    <header class="hd">
+      <img src="icons/icon48.png" width="22" height="22" alt="">
+      <b>크랙 툴박스</b>
+      <span class="ver sub small" id="version"></span>
+      <button class="btn primary" id="update" hidden>새 버전 업데이트</button>
+    </header>
+
+    <!-- 도구 열기 -->
+    <section class="group">
+      <div class="group-row">
+        <div class="grow"><div class="row-title">QA 러너</div><div class="sub small">채팅 화면에서 자동 진행·기록 패널을 열고 닫아요</div></div>
+        <button class="btn" id="openQa">열기</button>
+      </div>
+      <div class="group-row">
+        <div class="grow"><div class="row-title">버전 설정</div><div class="sub small">스토리 수정 화면에서 설정 창을 열어요</div></div>
+        <button class="btn" id="openBump">열기</button>
+      </div>
+    </section>
+
+    <!-- TXT 자동 입력 -->
+    <div class="cap">TXT 자동 입력 <span class="faint">· 스토리 수정 화면에서</span></div>
+
+    <label class="filebtn"><input id="txtFilesQuick" type="file" accept=".txt,.md,text/plain,text/markdown" multiple>
+      <b>이미 만든 파일 넣기</b>
+      <span>main · start · keyword · shortcut · 플레이가이드 · 추천답변</span>
+    </label>
+
+    <section class="group" id="status">
+      <div class="group-row" data-kind="main"><span>main <i>스토리 설정</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="start"><span>start <i>시작 설정</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="guide"><span>guide <i>플레이가이드</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="recs"><span>recs <i>추천 답변</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="keyword"><span>keyword <i>키워드북</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="shortcut"><span>shortcut <i>단축어</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+      <div class="group-row" data-kind="media"><span>media <i>미디어</i></span><b>없음</b><button class="x" title="이 항목 비우기">×</button></div>
+    </section>
+
+    <label id="imagePicker" class="group pad picker" hidden>
+      <strong>미디어용 이미지 선택</strong>
+      <span>media가 있을 때만 필요 · 5MB 이하 · 50개 카드에 같은 이미지를 재사용</span>
+      <input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp">
+    </label>
+
+    <p id="message"></p>
+    <button id="run" class="btn primary big wide" disabled>있는 항목만 자동 입력</button>
+
+    <details id="fallback">
+      <summary>파일 대신 내용을 직접 붙여넣기</summary>
+      <section class="group pad">
+        <div class="step-head"><strong>내용 붙여넣기</strong><button id="clearAll" class="btn">전체 비우기</button></div>
+        <textarea id="paste" placeholder="main·start·keyword·shortcut 내용을 여기에 붙여넣으세요. 여러 번 붙여넣으면 항목별로 반영됩니다."></textarea>
+        <div id="chooser" hidden>
+          <p class="hint">어느 항목인지 모르겠어요. 골라 주세요:</p>
+          <div class="choices">
+            <button class="btn" data-choose="main">main</button><button class="btn" data-choose="start">start</button><button class="btn" data-choose="guide">플레이가이드</button><button class="btn" data-choose="recs">추천답변</button><button class="btn" data-choose="keyword">keyword</button><button class="btn" data-choose="shortcut">shortcut</button><button class="btn" data-choose="media">media</button>
+          </div>
+        </div>
+      </section>
+    </details>
+
+    <p class="foot">고른 keyword·shortcut·media는 기존 항목을 지우고 다시 만들어요. 추천 답변은 파일에 있는 개수로 맞춰요. 없는 항목은 건드리지 않아요. 실행 중 크롬에 「디버깅 중」 안내가 뜰 수 있어요. 상단 ‘수정’은 자동으로 누르지 않아요.</p>
+    <p class="foot"><button class="link" id="checkUpdate">업데이트 확인</button> <span id="updateNote"></span></p>
+  </main>
+  <script src="autofill/parser.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

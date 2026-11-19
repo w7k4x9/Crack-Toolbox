@@ -1,0 +1,77 @@
+{
+  "manifest_version": 3,
+  "name": "크랙 툴박스",
+  "version": "1.0.0",
+  "description": "크랙 제작 도구 모음: TXT·플레이가이드·추천답변 자동 입력, QA 러너(자동 진행·기록), 버전 설정.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt5l2uTMPzdl9Z1VDQTFS7WMPVVDPigebW5xxM5fe/l3UgGqYCcYdqemAd7pASDSGxpcw2zv2lcCCi9vbELFXXzUeNWkgWg227/jkRPs2WGnAErQATfsTQGMU0mMJSFHT3X6j8Vo8ORHpxWoExg8VVKsom+zMjSrVeDbhH7hXvvuZRtDiOyHQYXp0Bl9AacFLy14ezkbzapBVlER6Km5FXdeV1aDtwsxY6CyfZa/Ejnivu9lH1SMOpydgiFLLWAXSD7HOTNmVPGyMQtPDWNCWqxtQN4k8yHAG6zwG8lGvboMkRsf7OEgCk/5dpBj7SJ1hX5JpgJA+GPjTynj6LUpZAQIDAQAB",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "크랙 툴박스",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "debugger",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://crack.wrtn.ai/*",
+    "https://crack-api.wrtn.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://crack.wrtn.ai/builder/story*"
+      ],
+      "js": [
+        "autofill/page-bridge.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://crack.wrtn.ai/builder/story*"
+      ],
+      "js": [
+        "autofill/parser.js",
+        "autofill/content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://crack.wrtn.ai/*"
+      ],
+      "js": [
+        "qa/pool.js",
+        "qa/content.js",
+        "bump/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "autofill/page-bridge.js"
+      ],
+      "matches": [
+        "https://crack.wrtn.ai/*"
+      ]
+    }
+  ]
+}
